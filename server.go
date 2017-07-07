@@ -79,6 +79,9 @@ func main() {
 
 	httpServerPort := shared.GetOsEnv("MITM_HTTP_SERVER_PORT", "10080")
 	httpsServerPort := shared.GetOsEnv("MITM_HTTPS_SERVER_PORT", "10443")
+	httpTargetScheme := shared.GetOsEnv("MITM_HTTP_TARGET_SCHEME", "http")
+	httpsTargetScheme := shared.GetOsEnv("MITM_HTTPS_TARGET_SCHEME", "https")
+
 	target := shared.GetOsEnv("MITM_TARGET", "localhost:443")
 	certificate := shared.GetOsEnv("MITM_CERT", "./cert.pem")
 	key := shared.GetOsEnv("MITM_KEY", "./key.pem")
@@ -90,7 +93,7 @@ func main() {
 		log.Println("Starting HTTP server on ", httpServerAddr)
 
 		httpMux := http.NewServeMux()
-		httpMux.HandleFunc("/", proxy(target, "https"))
+		httpMux.HandleFunc("/", proxy(target, httpTargetScheme))
 		httpServer := &http.Server{
 			Addr:           httpServerAddr,
 			Handler:        httpMux,
@@ -106,7 +109,7 @@ func main() {
 	log.Println("Starting HTTPS server on ", httpsServerAddr)
 
 	httpsMux := http.NewServeMux()
-	httpsMux.HandleFunc("/", proxy(target, "https"))
+	httpsMux.HandleFunc("/", proxy(target, httpsTargetScheme))
 	httpsServer := &http.Server{
 		Addr:           httpsServerAddr,
 		Handler:        httpsMux,

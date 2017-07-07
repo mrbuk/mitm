@@ -1,0 +1,10 @@
+hash: 07b60414d32a148983b8bc0f4ce5038ceec1ba808e0071a0308f991b00b949a3
+updated: 2017-07-07T14:08:28.059235139+02:00
+imports:
+- name: github.com/google/uuid
+  version: 064e2069ce9c359c118179501254f67d7d37ba24
+- name: github.com/mrbuk/ntt
+  version: 62ad6b8be10500729eb1622fdf52b046395658ca
+  subpackages:
+  - shared
+testImports: []
