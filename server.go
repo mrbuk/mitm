@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/mrbuk/ntt/shared"
+	"github.com/mrbuk/mitm/shared"
 )
 
 var client *http.Client

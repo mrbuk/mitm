@@ -2,6 +2,3 @@ package: github.com/mrbuk/mitm
 import:
 - package: github.com/google/uuid
   version: ~0.2.0
-- package: github.com/mrbuk/ntt
-  subpackages:
-  - shared
